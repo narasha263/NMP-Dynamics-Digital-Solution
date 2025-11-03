@@ -498,11 +498,12 @@ document.addEventListener("DOMContentLoaded", function () {
   </a>
 </div>
 
-<!-- 🧭 Navbar (position dynamically adjusted) -->
+<!-- 🧭 Navbar -->
 <nav id="navbar"
      class="fixed w-full bg-black bg-opacity-90 backdrop-blur-lg border-b border-gold border-opacity-20 transition-all duration-300 z-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-20">
+      <!-- Logo + Name -->
       <div class="flex items-center space-x-4">
         <div class="w-12 h-12 gold-gradient rounded-lg flex items-center justify-center">
           <img src="nmp logo.png" alt="NMP Dynamics Kenya - Digital Marketing Agency">
@@ -528,27 +529,45 @@ document.addEventListener("DOMContentLoaded", function () {
       <!-- Mobile Menu Button -->
       <div class="lg:hidden">
         <button id="mobile-menu-btn" class="text-white hover:text-gold">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
                   d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
       </div>
     </div>
+
+    <!-- Mobile Menu (Hidden by Default) -->
+    <div id="mobile-menu" class="hidden flex-col space-y-4 py-4 lg:hidden">
+      <a href="#home" class="text-white hover:text-gold transition-colors font-medium block">Home</a>
+      <a href="#services" class="text-white hover:text-gold transition-colors font-medium block">Services</a>
+      <a href="#how-we-help" class="text-white hover:text-gold transition-colors font-medium block">Process</a>
+      <a href="#packages" class="text-white hover:text-gold transition-colors font-medium block">Packages</a>
+      <a href="#portfolio" class="text-white hover:text-gold transition-colors font-medium block">Portfolio</a>
+      <a href="#blog" class="text-white hover:text-gold transition-colors font-medium block">Blog</a>
+      <a href="#testimonials" class="text-white hover:text-gold transition-colors font-medium block">Reviews</a>
+      <a href="#contact" class="premium-btn text-center block">Get Quote</a>
+    </div>
   </div>
 </nav>
 
-<!-- JS Fix -->
+<!-- ⚙️ JS: Adjust Navbar + Toggle Menu -->
 <script>
   function adjustNavbar() {
     const offerBar = document.getElementById('offer-bar');
     const navbar = document.getElementById('navbar');
-    const offerHeight = offerBar.offsetHeight;
-    navbar.style.top = offerHeight + 'px';
+    if (offerBar && navbar) {
+      navbar.style.top = offerBar.offsetHeight + 'px';
+    }
   }
 
   window.addEventListener('load', adjustNavbar);
   window.addEventListener('resize', adjustNavbar);
+
+  // Mobile menu toggle
+  document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  });
 </script>
 
 
@@ -1943,5 +1962,6 @@ document.addEventListener("DOMContentLoaded", initializeForm);
  </body>
 
 </html>
+
 
 
